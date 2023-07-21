@@ -2,6 +2,7 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.all
+    @book = Book.new
     @current_user = current_user
   end
 
@@ -13,6 +14,7 @@ class BooksController < ApplicationController
       redirect_to book_path(@book)
     else
       @books = Book.all
+      @current_user = current_user
       render 'index'
     end
   end
