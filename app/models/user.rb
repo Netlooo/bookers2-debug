@@ -24,4 +24,12 @@ class User < ApplicationRecord
   def get_profile_image
     (profile_image.attached?) ? profile_image : 'no_image.jpg'
   end
+
+  def follow(user_id)
+    favorites.create(follow_id: user_id)
+  end
+
+  def unfollow(user_id)
+    favorites.find_by(follow_id: user_id).destroy
+  end
 end
