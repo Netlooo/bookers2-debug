@@ -13,6 +13,10 @@ class UsersController < ApplicationController
     @book = Book.new
   end
 
+  def friends
+    @friends = User.all
+  end
+
   def edit
     @user = User.find(params[:id])
   end
