@@ -5,6 +5,7 @@ class UsersController < ApplicationController
     @users = User.all
     @current_user = current_user
     @book = Book.new
+    @friends = User.all
   end
 
   def show
@@ -13,9 +14,6 @@ class UsersController < ApplicationController
     @book = Book.new
   end
 
-  def friends
-    @friends = User.all
-  end
 
   def edit
     @user = User.find(params[:id])
