@@ -1,21 +1,23 @@
 
 
-<% friends.each do |friend| %>
-    <tr>
-        <td class="text-center"><%= link_to users_path(friend) do %>
-          <%= image_tag friend.user.get_profile_image(100,100) %>
+<tr>
+        <td>
+          <% users.each do |user| %>
+      <tr>
+        <td class="text-center"><%= link_to users_path(user) do %>
+          <%= image_tag user.get_profile_image(70,70) %>
         <% end %>
         </td>
-        <td class="text-center align-middle"><%= friend.nickname %></td>
-        <td class="text-center align-middle"><%= friend.height %></td>
-        <td class="text-center align-middle"><%= friend.weight %></td>
-        <td class="text-center align-middle"><%= friend.introduction %></td>
+        <td class="text-center align-middle"><%= user.name %></td>
+        <td class="text-center align-middle"><%= user.height %></td>
+        <td class="text-center align-middle"><%= user.weight %></td>
+        <td class="text-center align-middle"><%= user.introduction %></td>
         <!--ログインユーザーでない場合にフォローボタン表示-->
         <% if friend != current_user %>
-            <td class="text-center align-middle"><% if current_user.following?(friend) %>
-            <%= link_to "Unfollow", user_favorites_path(friend), method: :delete %>
+            <td class="text-center align-middle"><% if current_user.following?(user) %>
+            <%= link_to "Unfollow", user_favorites_path(user), method: :delete %>
         <% else %>
-            <%= link_to "Follow", user_favorites_path(friend), method: :post %>
+            <%= link_to "Follow", user_favorites_path(user), method: :post %>
         <% end %>
             </td>
         <% end %>
